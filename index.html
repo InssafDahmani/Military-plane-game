@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plane Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+   <div class="banner">
+    <video id="background-video" autoplay muted loop>
+        <source src="images/Flying Through Clouds HD.mp4" type="video/mp4">
+    </video>
+    
+    <div class="container">
+        <img id="plane" src="images/image.jpg" alt="Plane">
+    </div>
+   </div>
+
+   <!-- Chrono display -->
+   <div id="chrono-container" class="chrono-container">
+       <p id="chrono-time">00:00</p> <!-- This is where the timer will be shown -->
+   </div>
+
+   <!-- explosion sound    salmaaaaaaaa -->
+   <audio id="explosion-sound" src="sounds/explosion-91872.mp3"></audio>
+    <!-- Game Over Sound -->
+   <audio id="game-over-sound" src="sounds/game-over-160612.mp3"></audio>
+   <!-- Sound for collecting money -->
+   <audio id="money-sound" src="sounds/cashier-quotka-chingquot-sound-effect-129698.mp3"></audio>
+
+   <!-- Sound for shooting a rocket -->
+   <audio id="rocket-sound" src="sounds/hit-soundvideo-game-type-230510.mp3"></audio>
+
+
+
+
+
+   <script src="script.js"></script>
+</body>
+</html>

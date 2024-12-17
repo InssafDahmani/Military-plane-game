@@ -1,0 +1,239 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#plane {
+    height: 18%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.obstacle {
+    position: absolute;
+    z-index: 1;
+    background-image: url('images/plane.jpg'); /* Add your image here */
+    background-size: cover; /* Ensure the image covers the whole element */
+    background-position: center; /* Center the image */
+    border-radius: 50%; /* Optional: keeps it circular */
+    width: 85px;
+    height: 90px;
+}
+
+
+
+.bullet {
+    background-image: url('images/rocket.jpg'); /* Replace with the path to your image */
+    background-size: cover; /* Ensures the image covers the entire element */
+    background-repeat: no-repeat; /* Prevents tiling */
+    position: absolute;
+    z-index: 1;
+    width: 46px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.bomb {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url('images/bomb.jpg'); /* Replace with the path to your image */
+    background-size: cover; /* Ensures the image covers the entire element */
+    border-radius: 50%;
+    z-index: 2;
+}
+.dollar {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('images/dollar.jpg'); /* Replace with the path to your image */
+    background-size: cover; 
+    z-index: 2;
+}
+.ally{
+    position: absolute;
+    z-index: 1;
+    background-image: url('images/ally.jpg'); /* Add your image here */
+    background-size: cover; /* Ensure the image covers the whole element */
+    background-position: center; /* Center the image */
+    border-radius: 50%; /* Optional: keeps it circular */
+    width: 85px;
+    height: 90px;
+}
+/* Style for chrono display */
+.chrono-container {
+    position: fixed;
+    top: 10px;
+    right: 148px;
+    font-size: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: 'Arial', sans-serif;
+}
+
+#chrono-time {
+    margin: 0;
+}
+
+/* Style for score board */
+.score-board {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Explosion Icon Style         saaaalmaaaaaaaa*/
+.explosion {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('images/explosion.png') no-repeat center;
+    background-size: contain;
+    animation: explodeEffect 1.5s forwards, glowEffect 1.5s forwards;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+/* Main Explosion Effect */
+@keyframes explodeEffect {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    30% {
+        transform: scale(2.5);
+        opacity: 0.9;
+    }
+    60% {
+        transform: scale(3.5);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(5);
+        opacity: 0;
+    }
+}
+
+/* Glow Effect for Explosion */
+@keyframes glowEffect {
+    0% {
+        box-shadow: 0 0 10px 5px rgba(255, 165, 0, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 50px 20px rgba(255, 0, 0, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 100px 40px rgba(255, 0, 0, 0);
+    }
+}
+
+/*modal game over*/
+/* Game Over Modal */
+/* Game Over Modal Styling */
+.modal {
+    display: none; /* Hidden initially */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(
+        10,
+        25,
+        47,
+        0.8
+      ); /* Dark navy background with transparency */
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease forwards;
+    z-index: 9999;
+}
+
+.modal h1 {
+    margin: 0;
+    font-size: 60px;
+    color: yellow;
+    text-shadow: 0 0 10px yellow, 0 0 20px orange;
+    animation: gameOverText 2s infinite ease-in-out;
+}
+
+.modal p {
+    color: white;
+    font-size: 18px;
+    margin: 10px 0 20px 0;
+}
+
+/* Play Again Button Styling */
+.modal button {
+    background-color: #ff4500;
+    border: none;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.modal button:hover {
+    background-color: #ff6347;
+    transform: scale(1.1);
+}
+
+/* Fade-In Animation for Modal */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Game Over Text Animation */
+@keyframes gameOverText {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

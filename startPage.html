@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Page</title>
+    <link rel="stylesheet" href="startPage.css">
+</head>
+<body>
+    <!-- Audio for Start Page -->
+    <audio id="background-sound" preload="auto">
+        <source src="sounds/epic-hybrid-logo-157092.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="start-page">
+       <h1> Military Plane Game</h1>
+       <p>
+        Welcome to the <strong>Military Plane Game</strong>. In this game, you control a powerful military plane flying through a dangerous intergalactic battlefield. Dodge obstacles, shoot enemies, and prove your piloting skills! 
+        To win, survive as long as possible while scoring points by destroying obstacles.
+    </p>
+        <a href="test.html"><button>About the Game</button></a>
+        <a href="index.html"><button id="startButton">Start the Game</button></a>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const audio = document.getElementById('background-sound');
+            const startButton = document.getElementById('startButton');
+
+            // Add error handling for audio loading
+            audio.addEventListener('error', function(e) {
+                console.error('Error loading audio:', e);
+                console.log('Audio source:', audio.currentSrc);
+            });
+
+            // Check if audio file exists and is loaded
+            audio.addEventListener('loadeddata', function() {
+                console.log('Audio file loaded successfully');
+            });
+
+            // Function to start playing audio
+            function playBackgroundMusic() {
+                console.log('Attempting to play audio...');
+                audio.loop = true;
+                
+                audio.play()
+                    .then(() => {
+                        console.log('Audio playing successfully');
+                    })
+                    .catch((error) => {
+                        console.error('Failed to play audio:', error);
+                    });
+            }
+
+            // Play audio on any user interaction
+            document.body.addEventListener('click', function() {
+                playBackgroundMusic();
+            });
+
+            // Play audio on any key press
+            document.body.addEventListener('keydown', function() {
+                playBackgroundMusic();
+            });
+
+            // Stop audio when starting game
+            startButton.addEventListener('click', function() {
+                console.log('Stopping audio...');
+                audio.pause();
+                audio.currentTime = 0;
+            });
+        };
+    </script>
+</body>
+</html>
